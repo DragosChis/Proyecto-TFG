@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asistente Virtual - Sodire</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <!-- Contenedor principal del Chatbot con namespace -->
+  <div class="jdnchat-chatbot-container" id="jdnchat-chatbot-container">
+    <!-- Encabezado -->
+    <div class="jdnchat-chat-header">
+      <img src="img/logocompleto.png" alt="Chat-logocompleto" class="jdnchat-logocompleto" />
+      <p>¿En qué podemos ayudarte?</p>
+
+      <div class="jdnchat-header-buttons">
+        <!-- ENVOLTORIO NUEVO para el botón de reset + modal -->
+        <div class="jdnchat-reset-wrapper">
+          <img 
+            src="img/reset.png" 
+            alt="Reiniciar" 
+            id="jdnchat-reset-button" 
+            class="jdnchat-reset-icon" 
+          />
+          <div id="jdnchat-reset-modal" class="jdnchat-reset-modal">
+            <div class="jdnchat-reset-modal-content">
+              <p>¿Estás seguro de que deseas reiniciar el chat?</p>
+              <div class="jdnchat-reset-buttons">
+                <button id="confirmResetBtn" class="jdnchat-reset-confirm">Sí</button>
+                <button id="cancelResetBtn" class="jdnchat-reset-cancel">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón cerrar -->
+        <img 
+          src="img/cerrar.png" 
+          alt="Cerrar chat" 
+          id="jdnchat-chatbot-close" 
+          class="jdnchat-close-icon" 
+        />
+      </div>
+    </div>
+    <div id="jdnchat-sistema-info" class="jdnchat-sistema-info">
+      Va a ser atendido por el asistente virtual de <strong>Sodire</strong>.
+    </div>
+    <!-- Área de conversación -->
+    <div class="jdnchat-chat-log" id="jdnchat-chat-log"></div>
+
+    <!-- Área de input y botón Enviar -->
+    <div class="jdnchat-chat-input">
+      <div class="jdnchat-input-container">
+        <span 
+          id="jdnchat-suggestion-box" 
+          class="jdnchat-suggestion-box">
+        </span>
+        <input 
+          type="text" 
+          id="jdnchat-user-input" 
+          placeholder="Escribe tu pregunta..." 
+          autocomplete="off" 
+        />
+      </div>
+      <img 
+        id="jdnchat-send-button" 
+        src="img/avion1.png" 
+        alt="Enviar-avion" 
+        class="jdnchat-avion1" 
+      />
+    </div>
+  </div>
+
+  <!-- Botón flotante para abrir el chat -->
+  <button 
+    id="jdnchat-chatbot-toggle" 
+    class="jdnchat-chatbot-toggle">
+    <img 
+      src="img/logo.png" 
+      alt="Chat" 
+      class="jdnchat-chat-icon" 
+    />
+  </button>
+
+  <!-- Script principal -->
+  <script src="chatbot.js"></script>
+</body>
+</html>
