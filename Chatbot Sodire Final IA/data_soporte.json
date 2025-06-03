@@ -1,0 +1,376 @@
+{
+  "secciones": [
+    {
+      "titulo": "Soporte Tecnico",
+      "inicios": [
+        {
+          "id": "servicio",
+          "mensaje": "¿Con qué servicio necesita ayuda?",
+          "opciones": [
+            {
+              "opcion": "L'Addition",
+              "siguienteId": "ldd"
+            },
+            {
+              "opcion": "LastApp",
+              "siguienteId": "lastapp"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "flujos": {
+    "ldd": {
+      "preguntas": [
+        {
+          "id": "p0",
+          "pregunta": "¿En qué podemos ayudarte?",
+          "opciones": [
+            {
+              "opcion": "Quiero contactar con un tecnico",
+              "siguienteId": "formularioSoporte",
+              "id": "problema_contacto_tecnico"
+            },
+            {
+              "opcion": "Tengo un problema con la sincronización",
+              "siguienteId": "flujo_sincronizacion",
+              "id": "problema_sincronizacion"
+            },
+            {
+              "opcion": "Mi impresora no funciona",
+              "siguienteId": "flujo_impresora",
+              "id": "problema_impresora"
+            },
+            {
+              "opcion": "Necesito ayuda con la configuración",
+              "siguienteId": "flujo_configuracion",
+              "id": "problema_configuracion"
+            },
+            {
+              "opcion": "Tengo dudas sobre reporting",
+              "siguienteId": "flujo_reporting",
+              "id": "problema_reporting"
+            },
+            {
+              "opcion": "Configurar Dispositivos",
+              "siguienteId": "flujo_dispositivos",
+              "id": "problema_dispositivos"
+            }
+          ]
+        }
+      ]
+    },
+    "lastapp": {
+      "preguntas": []
+    },
+    "flujo_sincronizacion": {
+      "preguntas": [
+        {
+          "id": "intro",
+          "pregunta": "Para poder ayudarte con problemas de sincronización, necesitamos saber más detalles.",
+          "siguienteId": "s1"
+        },
+        {
+          "id": "s1",
+          "pregunta": "¿Está el router Asus encendido?",
+          "opciones": [
+            { "opcion": "Sí", "siguienteId": "s2", "id": "router_si" },
+            { "opcion": "No", "siguienteId": "s2", "id": "router_no" }
+          ]
+        },
+        {
+          "id": "s2",
+          "pregunta": "¿Estás conectado a la red Wifi L'Addition?",
+          "opciones": [
+            { "opcion": "Sí", "siguienteId": "s3", "id": "wifi_si" },
+            { "opcion": "No", "siguienteId": "s3", "id": "wifi_no" }
+          ]
+        },
+        {
+          "id": "s3",
+          "pregunta": "¿Las versiones de la aplicación están actualizadas?",
+          "opciones": [
+            { "opcion": "Sí", "siguienteId": "s4", "id": "actualizado_si" },
+            { "opcion": "No", "siguienteId": "s4", "id": "actualizado_no" },
+            { "opcion": "No lo se", "siguienteId": "s4", "id": "actualizado_nose" }
+          ]
+        },
+        {
+          "id": "s4",
+          "pregunta": "¿Los iPads se comunican entre sí o presentan información desactualizada?",
+          "opciones": [
+            { "opcion": "Se comunican", "siguienteId": "s5", "id": "comunican_si" },
+            { "opcion": "No se comunican", "siguienteId": "s5", "id": "comunican_no" }
+          ]
+        },
+        {
+          "id": "s5",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Verificar que estás conectado a la red Wifi L'Addition\n2. Comprobar en la AppStore las últimas actualizaciones de la APP\n3. Desconectar el servidor (NUC) de la luz, pulsar 15 veces el botón de encender y volver a conectar\n4. Cerrar el servicio desde el iPad Máster y volver a abrirlo\n\n¿Has podido resolver el problema con estos pasos?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "s7", "id": "resolver_si" },
+            { "opcion": "No", "siguienteId": "s8", "id": "resolver_no" }
+          ]
+        },
+        {
+          "id": "s7",
+          "pregunta": "¡Perfecto! Nos alegra saber que has podido resolver el problema. ¿Hay algo más en lo que pueda ayudarte?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No", "siguienteId": "fin_chat", "id": "finalizar" }
+          ]
+        },
+        {
+          "id": "s8",
+          "pregunta": "Entiendo que no hemos podido solucionar tu problema con las soluciones ofrecidas; en este caso necesitamos pasar tu caso a un técnico especializado debido a que tu caso puede involucrar lo siguiente:\n\n1. El problema involucra hardware físico defectuoso.\n2. El problema persiste después de aplicar soluciones básicas.\n3. Se requieren cambios en configuración avanzada.\n4. Involucra múltiples locales o integraciones complejas",
+          "siguienteId": "formularioSoporte"
+        },
+        {
+          "id": "formularioSoporte",
+          "pregunta": "Para que un técnico se ponga en contacto contigo en la mayor brevedad posible, necesitamos que nos proporciones información sobre tu incidencia rellenando el siguiente formulario:",
+          "siguienteId": null
+        }
+      ]
+    },
+    "flujo_impresora": {
+      "preguntas": [
+        {
+          "id": "intro_impresora",
+          "pregunta": "Para solucionar el problema con la impresora, necesito verificar algunas cosas:",
+          "siguienteId": "i1"
+        },
+        {
+          "id": "i1",
+          "pregunta": "¿La impresora está correctamente conectada (alimentación, cables)?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "i2", "id": "conectada_si" },
+            { "opcion": "No", "siguienteId": "i2", "id": "conectada_no" }
+          ]
+        },
+        {
+          "id": "i2",
+          "pregunta": "¿El iPad está conectado al wifi L'Addition?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "i3", "id": "wifi_si" },
+            { "opcion": "No", "siguienteId": "i3", "id": "wifi_no" }
+          ]
+        },
+        {
+          "id": "i3",
+          "pregunta": "¿Has verificado el papel térmico de la impresora?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "i4", "id": "verificado_si" },
+            { "opcion": "No", "siguienteId": "i4", "id": "verificado_no" }
+          ]
+        },
+        {
+          "id": "i4",
+          "pregunta": "¿La impresora está encendida?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "i5", "id": "encendida_si" },
+            { "opcion": "No", "siguienteId": "i5", "id": "encendida_no" }
+          ]
+        },
+        {
+          "id": "i5",
+          "pregunta": "¿Has comprobado la configuración de la impresora en L'Addition APP?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "i6", "id": "comprobado_si" },
+            { "opcion": "No", "siguienteId": "i6", "id": "comprobado_no" }
+          ]
+        },
+        {
+          "id": "i6",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Verificar que la impresora esté correctamente conectada a la red (mediante cable o Wi-Fi) y que cuente con alimentación eléctrica.\n2. Verificar que el iPad esté conectado a la red Wi-Fi de L'Addition.\n3. Verificar que el papel esté correctamente colocado y que se trate de papel térmico compatible con impresoras térmicas.\n4. Apagar la impresora utilizando el botón de encendido, esperar 20 segundos y volver a encenderla.\n5. Si persiste: apagar la impresora y volver a encenderla pulsando simultáneamente el botón de extracción de papel. Luego, añadir la dirección IP en la APP, en Configuración > Impresión > Tickets.\n6. Ajustar permisos:\n   • Ajustes (del iPad) > APPS > L'Addition > Ubicación > Al usarse.\n   • Ajustes (del iPad) > APPS > L'Addition > Red local > Activar\n\n¿La impresora funciona ahora?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "i8", "id": "funciona_si" },
+            { "opcion": "No", "siguienteId": "i9", "id": "funciona_no" }
+          ]
+        },
+        {
+          "id": "i8",
+          "pregunta": "¡Perfecto! Nos alegra saber que has podido resolver el problema. ¿Hay algo más en lo que pueda ayudarte?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No", "siguienteId": "fin_chat", "id": "finalizar" }
+          ]
+        },
+        {
+          "id": "i9",
+          "pregunta": "Entiendo que no hemos podido solucionar tu problema con las soluciones ofrecidas; en este caso necesitamos pasar tu caso a un técnico especializado debido a que tu caso puede involucrar lo siguiente:\n\n1. El problema involucra hardware físico defectuoso.\n2. El problema persiste después de aplicar soluciones básicas.\n3. Se requieren cambios en configuración avanzada.\n4. Involucra múltiples locales o integraciones complejas.",
+          "siguienteId": "formularioSoporte"
+        }
+      ]
+    },
+    "flujo_configuracion": {
+      "preguntas": [
+        {
+          "id": "c1",
+          "pregunta": "Entiendo que necesitas ayuda con la configuración del sistema. ¿Con qué componente específico necesitas ayuda?",
+          "opciones": [
+            { "opcion": "Categorías", "siguienteId": "cate", "id": "config_categorias" },
+            { "opcion": "Productos", "siguienteId": "prd", "id": "config_productos" },
+            { "opcion": "Menús", "siguienteId": "menu", "id": "config_menus" },
+            { "opcion": "Complementos", "siguienteId": "comp", "id": "config_complementos" },
+            { "opcion": "Salas", "siguienteId": "sala", "id": "config_salas" },
+            { "opcion": "Usuarios/Roles", "siguienteId": "usr", "id": "config_usuarios" }
+          ]
+        },
+        {
+          "id": "cate",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Configuración > Carta > Añadir nueva categoría pulsando '+ nueva categoría' con su nombre.\n\n¿Has podido realizar la configuración correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "c3", "id": "configuracion_si" },
+            { "opcion": "No", "siguienteId": "c4", "id": "configuracion_no" }
+          ]
+        },
+        {
+          "id": "prd",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Configuración > Carta > Añadir un producto, seleccionando la categoría y pulsando '+ nuevo producto'.\n\n¿Has podido realizar la configuración correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "c2", "id": "configuracion_si" },
+            { "opcion": "No", "siguienteId": "c3", "id": "configuracion_no" }
+          ]
+        },
+        {
+          "id": "menu",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Configuración > Carta > Menú > Añadir menú pulsando '+ nuevo menú' con su nombre, precio y secciones.\n\n¿Has podido realizar la configuración correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "c2", "id": "configuracion_si" },
+            { "opcion": "No", "siguienteId": "c3", "id": "configuracion_no" }
+          ]
+        },
+        {
+          "id": "comp",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Configuración > Carta > Complemento > Añadir complementos pulsando '+ nueva categoría' y luego '+ nuevo subcomplemento'.\n\n¿Has podido realizar la configuración correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "c2", "id": "configuracion_si" },
+            { "opcion": "No", "siguienteId": "c3", "id": "configuracion_no" }
+          ]
+        },
+        {
+          "id": "sala",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Configuración > Distribución de sala > '+ nueva sala'.\n\n¿Has podido realizar la configuración correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "c2", "id": "configuracion_si" },
+            { "opcion": "No", "siguienteId": "c3", "id": "configuracion_no" }
+          ]
+        },
+        {
+          "id": "usr",
+          "pregunta": "Basado en la información proporcionada, te recomiendo seguir estos pasos:\n\n1. Configuración > Gestión de usuarios > '+ nuevo usuario'.\n2. Para editar roles: pestaña 'Grupos', '+ añadir'.\n\n¿Has podido realizar la configuración correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "c2", "id": "configuracion_si" },
+            { "opcion": "No", "siguienteId": "c3", "id": "configuracion_no" }
+          ]
+        },
+        {
+          "id": "c2",
+          "pregunta": "¡Perfecto! Nos alegra saber que has podido realizar la configuración correctamente. ¿Hay algo más en lo que pueda ayudarte?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No", "siguienteId": "fin_chat", "id": "finalizar" }
+          ]
+        },
+        {
+          "id": "c3",
+          "pregunta": "Entiendo que no has podido realizar la configuración correctamente con la guía ofrecida; en este caso necesitamos pasar tu caso a un técnico especializado. Por favor, rellena el siguiente formulario y un agente se pondrá en contacto contigo:",
+          "siguienteId": "formularioSoporte"
+        }
+      ]
+    },
+    "flujo_reporting": {
+      "preguntas": [
+        {
+          "id": "r1",
+          "pregunta": "Para ayudarte con el reporting y la facturación, dime qué necesitas específicamente:",
+          "opciones": [
+            { "opcion": "Acceso al reporting", "siguienteId": "report", "id": "acceso_reporting" },
+            { "opcion": "Facturas para hacienda", "siguienteId": "fact_hacienda", "id": "factura_hacienda" },
+            { "opcion": "Generación de facturas de tickets", "siguienteId": "fact_tickets", "id": "generar_facturas" },
+            { "opcion": "Visualización de tickets", "siguienteId": "visualizar_tickets", "id": "ver_tickets" },
+            { "opcion": "Descargas en Excel", "siguienteId": "desc_excel", "id": "descarga_excel" }
+          ]
+        },
+        {
+          "id": "report",
+          "pregunta": "Para acceder al reporting:\n• Visita: https://reporting.laddition.com/\n\n¿Has podido acceder a la información que necesitabas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "r2", "id": "acceder_si" },
+            { "opcion": "No", "siguienteId": "r3", "id": "acceder_no" }
+          ]
+        },
+        {
+          "id": "fact_hacienda",
+          "pregunta": "Para Hacienda, sigue los siguientes pasos:\n• Contabilidad > Factura por IVA -- Cobros\n\n¿Has podido acceder a la información que necesitabas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "r2", "id": "acceder_si" },
+            { "opcion": "No", "siguienteId": "r3", "id": "acceder_no" }
+          ]
+        },
+        {
+          "id": "fact_tickets",
+          "pregunta": "Para facturación de tickets, sigue los siguientes pasos:\n• Contabilidad > Factura simplificada > Modificar\n\n¿Has podido acceder a la información que necesitabas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "r2", "id": "acceder_si" },
+            { "opcion": "No", "siguienteId": "r3", "id": "acceder_no" }
+          ]
+        },
+        {
+          "id": "visualizar_tickets",
+          "pregunta": "Para la visualización de tickets, sigue los siguientes pasos:\n• Contabilidad > Tickets de caja\n\n¿Has podido acceder a la información que necesitabas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "r2", "id": "acceder_si" },
+            { "opcion": "No", "siguienteId": "r3", "id": "acceder_no" }
+          ]
+        },
+        {
+          "id": "desc_excel",
+          "pregunta": "Para descargas en Excel:\n• En cualquier apartado de la web encontrarás un círculo azul con la opción XLS\n\n¿Has podido acceder a la información que necesitabas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "r2", "id": "acceder_si" },
+            { "opcion": "No", "siguienteId": "r3", "id": "acceder_no" }
+          ]
+        },
+        {
+          "id": "r2",
+          "pregunta": "¡Perfecto! Nos alegra saber que has podido acceder correctamente a la información que necesitabas. ¿Hay algo más en lo que pueda ayudarte?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No", "siguienteId": "fin_chat", "id": "finalizar" }
+          ]
+        },
+        {
+          "id": "r3",
+          "pregunta": "Entiendo que no has podido acceder correctamente a la información que necesitabas; en este caso necesitamos pasar tu caso a un técnico especializado. Por favor, rellena el siguiente formulario y un agente se pondrá en contacto contigo:",
+          "siguienteId": "formularioSoporte"
+        }
+      ]
+    },
+    "flujo_dispositivos": {
+      "preguntas": [
+        {
+          "id": "d1",
+          "pregunta": "Para configurar correctamente el dispositivo, siga los siguientes pasos:\n1. Descargar la APP desde cero.\n2. Unirse a red L'Addition.\n3. Si es un dispositivo Master/Gerente, contactar a soporte.\n4. Introducir credenciales.\n5. En caso de haber olvidado la contraseña, siga estos pasos:\n   • Visita: https://auth.laddition.com/\n   • Haz click en '¿Has olvidado tu contraseña?' y rellene los campos.\n\n¿Has podido configurar el dispositivo correctamente?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "d2", "id": "configurado_si" },
+            { "opcion": "No", "siguienteId": "d3", "id": "configurado_no" }
+          ]
+        },
+        {
+          "id": "d2",
+          "pregunta": "¡Perfecto! Nos alegra saber que has podido configurar correctamente el dispositivo. ¿Hay algo más en lo que pueda ayudarte?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No", "siguienteId": "fin_chat", "id": "finalizar" }
+          ]
+        },
+        {
+          "id": "d3",
+          "pregunta": "Entiendo que no has podido configurar correctamente el dispositivo; en este caso necesitamos pasar tu caso a un técnico especializado. Por favor, rellena el siguiente formulario y un agente se pondrá en contacto contigo:",
+          "siguienteId": "formularioSoporte"
+        }
+      ]
+    }
+  }
+}

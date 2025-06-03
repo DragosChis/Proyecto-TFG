@@ -1,0 +1,836 @@
+/* Reset de estilos básicos */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Estilo general del body */
+body {
+  
+  background: #f0f2f5;
+}
+
+/* Contenedor principal del chatbot */
+.jdnchat-chatbot-container {
+  width: 350px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  
+}
+.jdnchat-chatbot-container.visible {
+  transform: scale(1);
+}
+
+/* Encabezado del chatbot */
+.jdnchat-chat-header {
+  background: #0b0a32;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  
+}
+.jdnchat-chat-header img.jdnchat-logocompleto {
+  width: 130px;
+}
+.jdnchat-chat-header p {
+  font-size: 1rem;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+/* Botones del encabezado */
+.jdnchat-header-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.jdnchat-reset-icon,
+.jdnchat-close-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+/* Área de conversación */
+.jdnchat-chat-log {
+  flex-grow: 1;
+  padding: 15px;
+  background: #f9f9f9;
+  overflow-y: auto;
+}
+
+/* Área de input y botón enviar */
+.jdnchat-chat-input {
+  display: flex;
+  padding: 15px;
+  background: #0b0a32;
+}
+.jdnchat-input-container {
+  position: relative;
+  flex-grow: 1;
+  background: #fff;
+  border-radius: 20px;
+}
+.jdnchat-suggestion-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  padding: 10px;
+  border-radius: 20px;
+  white-space: pre;
+  font-size: 1rem;
+  color: #999;
+  z-index: 1;
+  overflow: hidden;
+}
+#jdnchat-user-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  color: black;
+  caret-color: #000;
+  position: relative;
+  z-index: 2;
+  font-size: 1rem;
+}
+#jdnchat-user-input:focus {
+  outline: none;
+}
+.jdnchat-avion1 {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Botón flotante para abrir el chat */
+.jdnchat-chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #f92e3c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  transition: background 0.3s;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jdnchat-chatbot-toggle:hover {
+  background: #d00;
+}
+.jdnchat-chat-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Estilos para mensajes y hora */
+.jdnchat-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 100%;
+  position: relative;
+}
+.jdnchat-message-wrapper.bot {
+  align-items: flex-start;
+  position: relative;
+}
+.jdnchat-bot-avatar {
+  position: absolute;
+  top: -5px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #eee;
+  z-index: 2;
+}
+.jdnchat-message-wrapper.user {
+  align-items: flex-end;
+}
+.jdnchat-chat-message {
+  border-radius: 15px;
+  padding: 10px;
+  color: #000;
+  max-width: 72%;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  background: #ebeef9;
+  position: relative;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 100px;
+}
+.jdnchat-message-wrapper.user .jdnchat-chat-message {
+  border: 1px solid #cccccc;
+  background: #ffffff;
+}
+.jdnchat-message-hour {
+  position: absolute;
+  top: 5px;
+  font-size: 0.75rem;
+  color: #888;
+}
+.jdnchat-message-wrapper.bot .jdnchat-message-hour {
+  right: 10px;
+}
+.jdnchat-message-wrapper.user .jdnchat-message-hour {
+  right: 10px;
+}
+.jdnchat-message-wrapper.user .jdnchat-chat-message,
+.jdnchat-message-wrapper.bot .jdnchat-chat-message {
+  padding-top: 25px;
+}
+
+/* Botones de opciones */
+.jdnchat-chat-option {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 17px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.jdnchat-chat-option:hover {
+  background: #f0f0f0;
+}
+
+/* ==== FORMULARIO DE CONTACTO EN EL CHAT ==== */
+.jdnchat-formulario {
+  position: relative;
+  background: #f5f6fb;
+  border-radius: 15px;
+  padding: 15px;
+  max-width: 100%;
+  width: 210px; /* Puedes aumentar este ancho si el texto se ve muy cortado */
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #000;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.jdnchat-formulario label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.jdnchat-formulario input,
+.jdnchat-formulario textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+.jdnchat-formulario input::placeholder,
+.jdnchat-formulario textarea::placeholder {
+  font-size: 0.8em;
+  color: #777;
+}
+.jdnchat-formulario input[type="checkbox"] {
+  width: auto;
+  margin-right: 5px;
+}
+.jdnchat-formulario textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.jdnchat-formulario button {
+  position: relative;
+  display: block;
+  margin: 12px auto 0;
+  background-color: #f92e3c;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+  z-index: 999;
+}
+.jdnchat-formulario button:hover {
+  background-color: #b30000;
+}
+
+.jdnchat-obligatorio {
+  color: #f92e3c;
+  font-weight: bold;
+}
+.jdnchat-divider {
+  margin-bottom: 24px;
+}
+
+/* ==== Checkbox personalizado para Política de Privacidad ==== */
+.checkbox-wrapper-29 {
+  margin-top: 2px;
+  --size: 10px;
+  --background: #fff;
+  font-size: var(--size);
+}
+
+.checkbox-wrapper-29 *,
+.checkbox-wrapper-29 *::after,
+.checkbox-wrapper-29 *::before {
+  box-sizing: border-box;
+}
+
+.checkbox-wrapper-29 input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+}
+
+.checkbox-wrapper-29 .checkbox__label {
+  width: var(--size);
+  position: relative;
+  display: inline-block;
+}
+
+.checkbox-wrapper-29 .checkbox__label:before {
+  content: ' ';
+  display: block;
+  height: var(--size);
+  width: var(--size);
+  position: absolute;
+  top: calc(var(--size) * 0.125);
+  left: 0;
+  background: var(--background);
+}
+
+.checkbox-wrapper-29 .checkbox__label:after {
+  content: ' ';
+  display: block;
+  height: var(--size);
+  width: var(--size);
+  border: calc(var(--size) * .14) solid #000;
+  transition: 200ms;
+  position: absolute;
+  top: calc(var(--size) * 0.125);
+  left: 0;
+  background: var(--background);
+}
+
+.checkbox-wrapper-29 .checkbox__label:after {
+  transition: 100ms ease-in-out;
+}
+
+.checkbox-wrapper-29 .checkbox__input:checked ~ .checkbox__label:after {
+  border-top-style: none;
+  border-right-style: none;
+  transform: rotate(-45deg);
+  height: calc(var(--size) * .5);
+  border-color: green;
+}
+
+.checkbox-wrapper-29 .checkbox__label:after:hover,
+.checkbox-wrapper-29 .checkbox__label:after:active {
+  border-color: green;
+}
+
+.checkbox-wrapper-29 .checkbox {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.checkbox-wrapper-29 .checkbox__label {
+  margin-right: calc(var(--size) * 0.45);
+}
+
+.checkbox-wrapper-29 .checkbox__text {
+  font-size: 10px;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.checkbox__text .jdnchat-obligatorio {
+  font-size: 18px;
+}
+
+/* ==== Nuevo Modelo de Checkbox para el Formulario de Productos ==== */
+
+/* Opcional: si deseas escalar todo el grupo */
+.jdnchat-checkbox-group {
+  transform: scale(0.9);
+  transform-origin: top left;
+}
+
+/* Cada opción de producto: Grid de 2 columnas (24px para el círculo, resto para el texto) */
+.checkbox-wrapper-12 {
+  display: grid;
+  grid-template-columns: 24px 1fr; /* Primera col para el checkbox, segunda col para el texto */
+  align-items: start;              /* El círculo se alinea arriba y el texto envuelve */
+  gap: 8px;
+  margin-bottom: -170px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.checkbox-wrapper-12 .cbx {
+  position: relative; /* para que input, label y svg se ubiquen dentro */
+  width: 24px;
+  height: 24px;
+}
+
+/* Quita cualquier posicionamiento absoluto que desplace el SVG del filtro Gooey si no lo necesitas */
+
+/* Input: el círculo base */
+.checkbox-wrapper-12 .cbx input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #bfbfc0;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Label: el efecto Gooey */
+.checkbox-wrapper-12 .cbx label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border-radius: 50%;
+  -webkit-filter: url("#goo-12");
+  filter: url("#goo-12");
+  pointer-events: none;
+}
+
+/* SVG con la marca de verificación */
+.checkbox-wrapper-12 .cbx svg {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  z-index: 1;
+  pointer-events: none;
+}
+.checkbox-wrapper-12 .cbx svg path {
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 19;
+  stroke-dashoffset: 19;
+  transition: stroke-dashoffset 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+/* Al hacer check, dispara la animación "splash" y muestra la marca */
+.checkbox-wrapper-12 .cbx input:checked + label {
+  animation: splash-12 0.6s ease forwards;
+}
+.checkbox-wrapper-12 .cbx input:checked + label + svg path {
+  stroke-dashoffset: 0;
+}
+
+/* Animaciones Gooey */
+@-moz-keyframes splash-12 {
+  40% {
+    background: #f92e3c;
+    box-shadow: 0 -18px 0 -8px #f92e3c,
+                16px -8px 0 -8px #f92e3c,
+                16px 8px 0 -8px #f92e3c,
+                0 18px 0 -8px #f92e3c,
+                -16px 8px 0 -8px #f92e3c,
+                -16px -8px 0 -8px #f92e3c;
+  }
+  100% {
+    background: #f92e3c;
+    box-shadow: 0 -36px 0 -10px transparent,
+                32px -16px 0 -10px transparent,
+                32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent,
+                -32px 16px 0 -10px transparent,
+                -32px -16px 0 -10px transparent;
+  }
+}
+@-webkit-keyframes splash-12 {
+  40% {
+    background: #f92e3c;
+    box-shadow: 0 -18px 0 -8px #f92e3c,
+                16px -8px 0 -8px #f92e3c,
+                16px 8px 0 -8px #f92e3c,
+                0 18px 0 -8px #f92e3c,
+                -16px 8px 0 -8px #f92e3c,
+                -16px -8px 0 -8px #f92e3c;
+  }
+  100% {
+    background: #f92e3c;
+    box-shadow: 0 -36px 0 -10px transparent,
+                32px -16px 0 -10px transparent,
+                32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent,
+                -32px 16px 0 -10px transparent,
+                -32px -16px 0 -10px transparent;
+  }
+}
+@-o-keyframes splash-12 {
+  40% {
+    background: #f92e3c;
+    box-shadow: 0 -18px 0 -8px #f92e3c,
+                16px -8px 0 -8px #f92e3c,
+                16px 8px 0 -8px #f92e3c,
+                0 18px 0 -8px #f92e3c,
+                -16px 8px 0 -8px #f92e3c,
+                -16px -8px 0 -8px #f92e3c;
+  }
+  100% {
+    background: #f92e3c;
+    box-shadow: 0 -36px 0 -10px transparent,
+                32px -16px 0 -10px transparent,
+                32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent,
+                -32px 16px 0 -10px transparent,
+                -32px -16px 0 -10px transparent;
+  }
+}
+@keyframes splash-12 {
+  40% {
+    background: #f92e3c;
+    box-shadow: 0 -18px 0 -8px #f92e3c,
+                16px -8px 0 -8px #f92e3c,
+                16px 8px 0 -8px #f92e3c,
+                0 18px 0 -8px #f92e3c,
+                -16px 8px 0 -8px #f92e3c,
+                -16px -8px 0 -8px #f92e3c;
+  }
+  100% {
+    background: #f92e3c;
+    box-shadow: 0 -36px 0 -10px transparent,
+                32px -16px 0 -10px transparent,
+                32px 16px 0 -10px transparent,
+                0 36px 0 -10px transparent,
+                -32px 16px 0 -10px transparent,
+                -32px -16px 0 -10px transparent;
+  }
+}
+
+/* Aseguramos que el contenedor del formulario sea relative */
+.jdnchat-form-container {
+  position: relative;
+}
+
+/* Posicionamos el spinner fuera del formulario */
+.jdnchat-spinner-outside {
+  position: absolute;
+  bottom: -10px;
+  transform: translateX(-50%);
+  right: -40%;          /* Justo debajo del contenedor */
+  margin-top: -40px;   /* Separación del formulario; ajústalo si es necesario */
+  display: none;      /* Oculto por defecto; se mostrará mediante JS */
+}
+
+/* Estilos para la imagen del spinner */
+.jdnchat-gif-enviando {
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* El contenedor general para las burbujas flotantes */
+.jdnchat-floating-bubble-container {
+  position: absolute;
+  width: 100%;         /* Ocupa todo el ancho disponible */
+  bottom: -130px;
+  right: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end; /* Alinea la burbuja a la derecha */
+  padding-right: -20px;      /* Ajusta si la quieres más separada del borde */
+  pointer-events: none;     /* Para que no bloquee clics debajo si lo deseas */
+}
+
+.jdnchat-bubble-notification {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  max-width: 280px;
+  min-width: 160px;
+  word-wrap: break-word;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;  /* Permite que se pueda seleccionar el texto si lo necesitas */
+}
+.jdnchat-reset-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.jdnchat-reset-modal {
+  position: absolute;
+  bottom: 180%;
+  right: -13px;
+  background: #0b0a32;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  width: 260px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  
+}
+
+.jdnchat-reset-modal::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #0b0a32 transparent transparent transparent;
+}
+/* Botones */
+.jdnchat-reset-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.jdnchat-reset-confirm {
+  flex: 1;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.jdnchat-reset-cancel {
+  flex: 1;
+  background-color: #f92e3c;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.jdnchat-reset-confirm:hover {
+  background-color: #d1cece;
+}
+.jdnchat-reset-cancel:hover {
+  background-color: #d00;
+}
+.jdnchat-sistema-info {
+  font-size: 0.80rem;
+  font-style: italic;
+  color: #555;
+  padding: 8px 8px;
+  background: #eef2fb;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  transition: opacity 0.4s ease, max-height 0.4s ease, margin 0.3s ease, padding 0.3s ease;
+  opacity: 1;
+  max-height: 60px;
+  overflow: hidden;
+   min-height: 24px;
+}
+
+.jdnchat-sistema-info.oculto {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+}
+/* Estilos añadidos */
+.jdnchat-option-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.jdnchat-chat-option.selected {
+  background: #0b0a32 !important;
+  color: white !important;
+  border-color: #0b0a32 !important;
+}
+
+.jdnchat-chat-option.selected::after {
+  content: "✓";
+  margin-left: 8px;
+  font-size: 0.8em;
+}
+
+/* ===================== */
+/* Estilo para el botón "Rectificar respuesta anterior" que se inserta dentro de cada burbuja (excepto la de bienvenida) */
+.jdnchat-rectify-btn {
+  margin-top: 10px;
+  float: right;             /* <- Esto la empuja a la derecha */
+  color: #0b0a32;
+  border: none;
+  border-radius: 15px;
+  padding: 6px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  z-index: 100;
+  background: transparent;
+}
+
+.jdnchat-rectify-btn i {
+  font-family: "Font Awesome 6 Free"; /* o Font Awesome 6 Pro si tienes licencia */
+  font-weight: 900;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-block;
+}
+i[class^="fa-"],
+i[class*=" fa-"] {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900; /* importante para que fa-solid funcione */
+}
+.jdnchat-divider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.jdnchat-divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0 10px;
+}
+
+.jdnchat-divider-text {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+.jdnchat-digital-label {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.jdnchat-digital-label span {
+  margin-left: 8px;
+}
+.jdnchat-digital-label--selected {
+  background: #f0f8ff;
+  border-color: #007bff;
+}
+.jdnchat-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.jdnchat-btn--primary {
+  background-color: #f92e3c;
+  color: white;
+  border-radius: 50px;      /* bordes muy redondos */
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.jdnchat-btn--primary:disabled {
+  background-color: #e79a9a;
+  cursor: not-allowed;
+}
+
+#btnVolverPregunta {
+  position: absolute;
+  bottom: 80px;             /* Ajusta esta distancia si lo quieres más alto/bajo */
+  right: 30px;              /* Ajusta el margen derecho si lo quieres más a la izquierda/derecha */
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  background-image: url('img/botonscrollabajo.png'); /* Flecha hacia arriba (por defecto) */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;            /* Solo se mostrará vía JS */
+}
+
+/* Cuando el JS añada la clase `scroll-up`, cambiamos a flecha hacia abajo */
+#btnVolverPregunta.scroll-up {
+  background-image: url('img/botonscrollarriba.png');
+}
+.jdnchat-fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+.jdnchat-fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+

@@ -1,0 +1,718 @@
+{
+  "secciones": [
+    {
+      "titulo": "Digitalizar mi negocio",
+      "inicios": [
+        {
+          "opcion": "Digitalizar mi negocio",
+          "mensaje": "¡Genial! Cuéntame primero en qué área de tu negocio te gustaría empezar la digitalización.",
+          "opciones": [
+            { "opcion": "Reservas online",              "siguienteId": "digital_reservas", "id": "digitalizacion_reservas_online" },
+            { "opcion": "Delivery",                      "siguienteId": "digital_delivery", "id": "digitalizacion_delivery" },
+            { "opcion": "Gestión de stock y proveedores","siguienteId": "digital_stock_proveedores", "id": "digitalizacion_stock_proveedores" },
+            { "opcion": "Presencia en RRSS y/o web",     "siguienteId": "digital_redes_web", "id": "digitalizacion_rrss_web" },
+            { "opcion": "Automatizacion tareas administrativas", "siguienteId": "digital_automatizacion", "id": "digitalizacion_automatizacion_tareas_administrativas" },
+            { "opcion": "Agentes y uso de la IA",       "siguienteId": "digital_ia", "id": "digitalizacion_agentes_ia" },
+            { "opcion": "No estoy seguro/a, quiero orientacion", "siguienteId": "digital_orientacion", "id": "digitalizacion_orientacion" }
+          ]
+        }
+      ]
+    }
+  ],
+  "flujos": {
+    "digital_reservas": {
+      "preguntas": [
+        {
+          "id": "res_p1",
+          "pregunta": "¿En cuanto a las reservas, trabajas en 2 turnos durante las comidas y/o cenas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "res_p2", "id": "dos_turnos_si" },
+            { "opcion": "No", "siguienteId": "res_p2", "id": "dos_turnos_no" }
+          ]
+        },
+        {
+          "id": "res_p2",
+          "pregunta": "Gracias por la info. Te puedo pasar un resumen personalizado ahora y que un comercial se ponga en contacto contigo en la mayor brevedad posible. \n\n ¿Estarias interesado?",
+          "opciones": [
+         { "opcion": "Si, por favor", "siguienteId": "formularioDigitalizar", "id": "formulario_digitalizar_si" },
+         { "opcion": "No, gracias",    "siguienteId": "ayudaAdicional",      "id": "formulario_digitalizar_no" }
+          ]
+        }
+      ]
+    },
+    "digital_delivery": {
+      "preguntas": [
+        {
+          "id": "del_p1",
+          "pregunta": "¿Actualmente para delivery trabajas con algun Agregador o vas a trabajar?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "del_p2", "id": "agregador_si" },
+            { "opcion": "No", "siguienteId": "del_p3", "id": "agregador_no" }
+          ]
+        },
+        {
+          "id": "del_p2",
+          "pregunta": "¿Con cual trabajas o vas a trabajar?",
+          "respuesta_libre": true,
+          "siguienteId": "del_p3"
+        },
+        {
+          "id": "del_p3",
+          "pregunta": "Gracias por la info. Te puedo pasar un resumen personalizado ahora y que un comercial se ponga en contacto contigo en la mayor brevedad posible. \n\n ¿Estarias interesado?",
+          "opciones": [
+         { "opcion": "Si, por favor", "siguienteId": "formularioDigitalizar", "id": "formulario_digitalizar_si" },
+         { "opcion": "No, gracias",    "siguienteId": "ayudaAdicional",      "id": "formulario_digitalizar_no" }
+          ]
+        }
+      ]
+    },
+    "digital_stock_proveedores": {
+      "preguntas": [
+        {
+          "id": "stk_p1",
+          "pregunta": "¿En cuanto a gestion de stock, cuantos locales gestionas?",
+          "opciones": [
+            { "opcion": "1", "siguienteId": "stk_p2", "id": "gestion_locales" },
+            { "opcion": "+ de 1", "siguienteId": "stk_p2", "id": "gestion_locales" }
+          ]
+        },
+        {
+          "id": "stk_p2",
+          "pregunta": "¿Tienes experiencia en este tipo de programas?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "stk_p3", "id": "experiencia_programas_si" },
+            { "opcion": "No", "siguienteId": "stk_p4", "id": "experiencia_programas_no" }
+          ]
+        },
+        {
+          "id": "stk_p3",
+          "pregunta": "¿Qué experiencia tienes?",
+          "respuesta_libre": true,
+          "siguienteId": "stk_p4"
+        },
+        {
+          "id": "stk_p4",
+          "pregunta": "Gracias por la info. Te puedo pasar un resumen personalizado ahora y que un comercial se ponga en contacto contigo en la mayor brevedad posible. \n\n ¿Estarias interesado?",
+          "opciones": [
+         { "opcion": "Si, por favor", "siguienteId": "formularioDigitalizar", "id": "formulario_digitalizar_si" },
+         { "opcion": "No, gracias",    "siguienteId": "ayudaAdicional",      "id": "formulario_digitalizar_no" }
+          ]
+        },
+        {
+          "id": "ayudaAdicional",
+          "pregunta": "¿Puedo ayudarte en algo más?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No, gracias", "siguienteId": "fin_chat", "id": "volver_inicio" }
+          ]
+        }
+      ]
+    },
+    "digital_redes_web": {
+      "preguntas": [
+        {
+          "id": "rds_p1",
+          "pregunta": "¿Para digitalizacion de redes o web, quieres servicio para RRSS, web o ambas?",
+          "opciones": [
+            { "opcion": "RRSS", "siguienteId": "rds_p2", "id": "ocion_rrss" },
+            { "opcion": "Web", "siguienteId": "rds_p4", "id": "opcion_web" },
+            { "opcion": "Ambas", "siguienteId": "rds_p3", "id": "opcion_ambas" }
+          ]
+        },
+        {
+          "id": "rds_p2",
+          "pregunta": "¿Ya trabajas en alguna RRSS? Dinos cual ",
+          "respuesta_libre": true,
+          "siguienteId": "rds_p6"
+        },
+        {
+          "id": "rds_p3",
+          "pregunta": "¿Ya trabajas en alguna RRSS? Dinos cual ",
+          "respuesta_libre": true,
+          "siguienteId": "rds_p4"
+        },
+        {
+          "id": "rds_p4",
+          "pregunta": "¿Tienes la web creada? ",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "rds_p6", "id": "web_creada_si" },
+            { "opcion": "No", "siguienteId": "rds_p5", "id": "web_creada_no" }
+          ]
+        },
+        {
+          "id": "rds_p5",
+          "pregunta": "¿Estarias interesado en tener una pagina web?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "rds_p6", "id": "web_creada_si" },
+            { "opcion": "No", "siguienteId": "rds_p6", "id": "web_creada_no" }
+          ]
+        },
+        {
+          "id": "rds_p6",
+          "pregunta": "¿Qué te gustaría conseguir con el servicio de presencia en RRSS y/o web?",
+          "respuesta_libre": true,
+          "siguienteId": "rds_p7"
+        },
+        {
+          "id": "rds_p7",
+          "pregunta": "Gracias por la info. Te puedo pasar un resumen personalizado ahora y que un comercial se ponga en contacto contigo en la mayor brevedad posible. \n\n ¿Estarias interesado?",
+          "opciones": [
+         { "opcion": "Si, por favor", "siguienteId": "formularioDigitalizar", "id": "formulario_digitalizar_si" },
+         { "opcion": "No, gracias",    "siguienteId": "ayudaAdicional",      "id": "formulario_digitalizar_no" }
+          ]
+        },
+        {
+          "id": "ayudaAdicional",
+          "pregunta": "¿Puedo ayudarte en algo más?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No, gracias", "siguienteId": "fin_chat", "id": "volver_inicio" }
+          ]
+        }
+      ]
+    },
+    "digital_automatizacion": {
+      "preguntas": [
+        {
+          "id": "auto_p1",
+          "pregunta": "¿En cuanto a digitalizacion de automatizacion, qué te gustaría conseguir con el servicio de automatizacion?",
+          "respuesta_libre": true,
+          "siguienteId": "auto_p2"
+        },
+        {
+          "id": "auto_p2",
+          "pregunta": "Gracias por la info. Te puedo pasar un resumen personalizado ahora y que un comercial se ponga en contacto contigo en la mayor brevedad posible. \n\n ¿Estarias interesado?",
+          "opciones": [
+         { "opcion": "Si, por favor", "siguienteId": "formularioDigitalizar", "id": "formulario_digitalizar_si" },
+         { "opcion": "No, gracias",    "siguienteId": "ayudaAdicional",      "id": "formulario_digitalizar_no" }
+          ]
+        },
+        {
+          "id": "ayudaAdicional",
+          "pregunta": "¿Puedo ayudarte en algo más?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No, gracias", "siguienteId": "fin_chat", "id": "volver_inicio" }
+          ]
+        }
+      ]
+    },
+    "digital_ia": {
+      "preguntas": [
+        {
+          "id": "ia_p1",
+          "pregunta": "¿Qué te gustaría conseguir con el servicio de IA?",
+          "respuesta_libre": true,
+          "siguienteId": "ia_p2"
+        },
+        {
+          "id": "ia_p2",
+          "pregunta": "Gracias por la info. Te puedo pasar un resumen personalizado ahora y que un comercial se ponga en contacto contigo en la mayor brevedad posible. \n\n ¿Estarias interesado?",
+          "opciones": [
+         { "opcion": "Si, por favor", "siguienteId": "formularioDigitalizar", "id": "formulario_digitalizar_si" },
+         { "opcion": "No, gracias",    "siguienteId": "ayudaAdicional",      "id": "formulario_digitalizar_no" }
+          ]
+        },
+        {
+          "id": "ayudaAdicional",
+          "pregunta": "¿Puedo ayudarte en algo más?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No, gracias", "siguienteId": "fin_chat", "id": "volver_inicio" }
+          ]
+        }
+      ]
+    },
+    "digital_orientacion": {
+      "preguntas": [
+        {
+          "id": "orient_p1",
+          "pregunta": "Entiendo que necesitas ayuda para saber por donde empezar. Por favor ponte en contacto con nosotros mediante el siguiente email y te ayudaremos lo antes posible \n\n email@prueba.com",
+          "siguienteId": "ayudaAdicional"
+        },
+        {
+          "id": "ayudaAdicional",
+          "pregunta": "¿Puedo ayudarte en algo más?",
+          "opciones": [
+            { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+            { "opcion": "No, gracias", "siguienteId": "fin_chat", "id": "volver_inicio" }
+          ]
+        }
+      ]
+    },
+    "digital_tpv": {
+      "preguntas": [
+        {
+          "id": "tpv_p1",
+          "pregunta": "¿Que tipo de negocio tienes?",
+          "opciones": [
+            { "opcion": "Restaurante / Bar", "siguienteId": "tpv_p2", "id": "negocio_restaurante" },
+            { "opcion": "Cafetería", "siguienteId": "tpv_p2", "id": "negocio_cafeteria" },
+            { "opcion": "Heladería", "siguienteId": "tpv_p2", "id": "negocio_heladeria" },
+            { "opcion": "Food truck o puesto móvil", "siguienteId": "tpv_p2", "id": "negocio_foodtruck" },
+            { "opcion": "Local solo de comida para llevar y/o delivery", "siguienteId": "del_p0", "id": "negocio_delivery" }
+          ]
+        },
+        {
+            "id": "tpv_p2",
+            "pregunta": "¿Usaras dispositivos para tomar comandas en mesa? ¿Cuantos?",
+            "opciones": [
+              { "opcion": "NO", "siguienteId": "tipo_impresora", "id": "dispositivo_mesa_0" },
+              { "opcion": "1", "siguienteId": "p2", "id": "dispositivo_mesa_1" },
+              { "opcion": "2", "siguienteId": "p2", "id": "dispositivo_mesa_2" },
+              { "opcion": "3", "siguienteId": "p2", "id": "dispositivo_mesa_3" },
+              { "opcion": "4 o mas", "siguienteId": "p2", "id": "dispositivo_mesa_4" }
+            ]
+          },
+          {
+            "id": "p2",
+            "pregunta": "¿Tienes terraza? Te lo pregunto para valorar si necesitaremos un amplificador de señal.",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "p3", "id": "terraza_si" },
+              { "opcion": "No", "siguienteId": "pregunta_impresora", "id": "terraza_no" }
+            ]
+          },
+          {
+            "id": "p3",
+            "pregunta": "¿A qué distancia está la última mesa de la terraza?",
+            "opciones": [
+              { "opcion": "+ de 20 m", "siguienteId": "pregunta_impresora", "id": "distancia_20" },
+              { "opcion": "- de 20 m", "siguienteId": "pregunta_impresora", "id": "distancia_menos_20" }
+            ]
+          },
+          {
+            "id": "pregunta_impresora",
+            "pregunta": "¿Tienes alguna impresora que quieras usar?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "pregunta_ethernet", "id": "impresora_si" },
+              { "opcion": "No", "siguienteId": "tipo_impresora", "id": "impresora_no" }
+            ]
+          },
+          {
+            "id": "pregunta_ethernet",
+            "pregunta": "¿Es por wifi o por cable?",
+            "opciones": [
+              { "opcion": "Wifi", "siguienteId": "preguntaF", "id": "wifi_si" },
+              { "opcion": "Cable", "siguienteId": "preguntaF", "id": "cable_no" }
+            ]
+          },
+          {
+            "id": "preguntaF",
+            "pregunta": "¿Qué marca es la impresora?",
+            "opciones": [
+              { "opcion": "Epson", "siguienteId": "pregunta_mas_impresora", "id": "marca_epson" },
+              { "opcion": "Otra", "siguienteId": "pregunta_mas_impresora", "id": "marca_otra" }
+            ]
+          },
+          {
+            "id": "pregunta_mas_impresora",
+            "pregunta": "¿Vas a necesitar alguna impresora mas?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "tipo_impresora", "id": "impresora_si" },
+              { "opcion": "No", "siguienteId": "preguntaA", "id": "impresora_no" }
+            ]
+          },
+          {
+            "id": "tipo_impresora",
+            "pregunta": "¿Que tipo de impresora va a necesitar?",
+            "opciones": [
+              { "opcion": "Por Cable", "siguienteId": "cantidad_tipo_impresora_cable", "id": "impresora_cable" },
+              { "opcion": "Por Wifi", "siguienteId": "cantidad_tipo_impresora_wifi", "id": "impresora_wifi" },
+              { "opcion": "Ambas", "siguienteId": "cantidad_impresora_ambas", "id": "impresora_ambas" }
+            ]
+          },
+          {
+            "id": "cantidad_tipo_impresora_cable",
+            "pregunta": "¿Cuántas impresoras necesitas? (mínimo 2 si quieres enviar comandas a cocina)",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaA", "id": "impresora_1" },
+              { "opcion": "2", "siguienteId": "preguntaA", "id": "impresora_2" },
+              { "opcion": "3", "siguienteId": "preguntaA", "id": "impresora_3" },
+              { "opcion": "4 ", "siguienteId": "preguntaA", "id": "impresora_4" },
+              { "opcion": "5", "siguienteId": "preguntaA", "id": "impresora_5" }
+            ]
+          },
+          {
+            "id": "cantidad_tipo_impresora_wifi",
+            "pregunta": "¿Cuántas impresoras necesitas? (mínimo 2 si quieres enviar comandas a cocina)",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaA", "id": "impresora_1" },
+              { "opcion": "2", "siguienteId": "preguntaA", "id": "impresora_2" },
+              { "opcion": "3", "siguienteId": "preguntaA", "id": "impresora_3" },
+              { "opcion": "4 ", "siguienteId": "preguntaA", "id": "impresora_4" },
+              { "opcion": "5", "siguienteId": "preguntaA", "id": "impresora_5" }
+            ]
+          },
+          {
+            "id": "cantidad_impresora_ambas",
+            "pregunta": "¿Cuántas impresoras necesitas?",
+            "opciones": [
+              { "opcion": "2", "siguienteId": "preguntaA", "id": "impresora_2" },
+              { "opcion": "3", "siguienteId": "p4", "id": "impresora_3" },
+              { "opcion": "4 ", "siguienteId": "p5", "id": "impresora_4" },
+              { "opcion": "5", "siguienteId": "p6", "id": "impresora_5" }
+            ]
+          },
+          {
+            "id": "p4",
+            "pregunta": "¿Cuantas impresoras necesita por wifi? Segun lo que seleccione entiendo que las otras restantes seran por cable.",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaA", "id": "impresora_wifi_1" },
+              { "opcion": "2", "siguienteId": "preguntaA", "id": "impresora_wifi_2" }
+            ]
+          },
+          {
+            "id": "p5",
+            "pregunta": "¿Cuantas impresoras necesita por wifi? Segun lo que seleccione entiendo que las otras restantes seran por cable.",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaA", "id": "impresora_wifi_1" },
+              { "opcion": "2", "siguienteId": "preguntaA", "id": "impresora_wifi_2" },
+              { "opcion": "3", "siguienteId": "preguntaA", "id": "impresora_wifi_3" }
+            ]
+          },
+          {
+            "id": "p6",
+            "pregunta": "¿Cuantas impresoras necesita por wifi? Segun lo que seleccione entiendo que las otras restantes seran por cable.",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaA", "id": "impresora_wifi_1" },
+              { "opcion": "2", "siguienteId": "preguntaA", "id": "impresora_wifi_2" },
+              { "opcion": "3", "siguienteId": "preguntaA", "id": "impresora_wifi_3" },
+              { "opcion": "4", "siguienteId": "preguntaA", "id": "impresora_wifi_4" }
+            ]
+          },
+          {
+            "id": "preguntaA",
+            "pregunta": "Vale, para poder darte más informacion, sobre todo de precios, necesito saber si ¿Tienes tablet u ordenador para mandar comandas a cocina?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "numero_tabletpc", "id": "dispositivo_barra_si" },
+              { "opcion": "No", "siguienteId": "cantidad_tabletpc", "id": "dispositivo_barra_no" }
+            ]
+          },
+          {
+            "id": "numero_tabletpc", 
+            "pregunta": "¿Cuántos dispositivos tiene?",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaC", "id": "dispositivo_barra_1" },
+              { "opcion": "2", "siguienteId": "preguntaC", "id": "dispositivo_barra_2" },
+              { "opcion": "3", "siguienteId": "preguntaC", "id": "dispositivo_barra_3" }
+            ]
+          },
+          {
+            "id": "cantidad_tabletpc",
+            "pregunta": "¿Cuántos dispositivos va a necesitar para mandar comandas a cocina?",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "preguntaB", "id": "tdispositivo_barra_cantidad_1" },
+              { "opcion": "2", "siguienteId": "preguntaB", "id": "dispositivo_barra_cantidad_2" },
+              { "opcion": "3", "siguienteId": "preguntaB", "id": "dispositivo_barra_cantidad_3" }
+            ]
+          },
+          {
+            "id": "preguntaB",
+            "pregunta": "Perfecto ¿Qué sistema operativo prefieres?",
+            "opciones": [
+              { "opcion": "Android", "siguienteId": "dispositivo_android", "id": "so_android" },
+              { "opcion": "IOS", "siguienteId": "dispositivo_ios", "id": "so_ios" },
+              { "opcion": "Windows", "siguienteId": "finalRecomendacion", "id": "so_windows" }
+            ]
+          },
+          {
+            "id": "preguntaC",
+            "pregunta": "¿Vale que sistema operativo utiliza?",
+            "opciones": [
+              { "opcion": "Android", "siguienteId": "dispositivo_android", "id": "so_android" },
+              { "opcion": "IOS", "siguienteId": "dispositivo_ios", "id": "so_ios" },
+              { "opcion": "Windows", "siguienteId": "finalRecomendacion", "id": "so_windows" }
+            ]
+          },
+          {
+            "id": "dispositivo_android",
+            "pregunta": "¿Qué dispositivo usas o necesitas?",
+            "opciones": [
+              { "opcion": "Movil", "siguienteId": "finalRecomendacion", "id": "dispositivo_movil" },
+              { "opcion": "Tablet", "siguienteId": "finalRecomendacion", "id": "dispositivo_tablet" }
+            ]
+          },
+          {
+            "id": "dispositivo_ios",
+            "pregunta": "¿Qué dispositivo usas o necesitas?",
+            "opciones": [
+              { "opcion": "Movil", "siguienteId": "router_especifico", "id": "dispositivo_movil" },
+              { "opcion": "Tablet", "siguienteId": "router_especifico", "id": "dispositivo_tablet" },
+              { "opcion": "Ordenador", "siguienteId": "router_especifico", "id": "dispositivo_ordenador" }
+            ]
+          },
+          {
+            "id": "router_especifico",
+            "pregunta": "Debe saber que es necesario tener un router específico que cree una red local para que funcione el TPV L'Addition. A parte del router que emite la señal de internet. ¿Quiere contratarlo con nosotros?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "finalRecomendacion", "id": "router_especifico_si" },
+              { "opcion": "No", "siguienteId": "finalRecomendacion", "id": "router_especifico_no" }
+            ]
+          },
+          {
+            "id": "finalRecomendacion",
+            "pregunta": "Gracias. Según lo que me dijiste, te propongo el TPV ideal. ¿Quieres un presupuesto personalizado?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "formularioPresupuesto", "id": "formulario_presupuestor_si" },
+              { "opcion": "No, gracias", "siguienteId": "ayudaAdicional", "id": "formulario_presupuesto_no" }
+            ]
+          },
+          {
+            "id": "formularioPresupuesto",
+            "pregunta": "Te dejo un formulario para que nos pases tus datos y te enviemos un resumen de la conversación y un presupuesto personalizado.",
+            "siguienteId": "ayudaAdicional"
+          },
+          {
+            "id": "formularioDigitalizar",
+            "pregunta": "Te dejo un formulario para que nos pases tus datos y te enviemos un resumen de la conversación.",
+            "siguienteId": "pregunta_tpv"
+          },
+          {
+            "id": "pregunta_tpv",
+            "pregunta": "¿Ahora que tienes la informacion necesaria para digitalizacion, te interesaria informacion sobre contratacion de TPV?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "tpv_p1", "id": "volver_inicio" },
+              { "opcion": "No, gracias", "siguienteId": "ayudaAdicional", "id": "volver_inicio" }
+            ]
+          },
+          {
+            "id": "ayudaAdicional",
+            "pregunta": "¿Puedo ayudarte en algo más?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "inicio", "id": "volver_inicio" },
+              { "opcion": "No, gracias", "siguienteId": "fin_chat", "id": "volver_inicio" }
+            ]
+          },
+          {
+            "id": "del_p0",
+            "pregunta": "¿trabajas con algun agregador, como por ejemplo: (Glovo, Uber, Just Eat, etc.)?",
+            "opciones": [
+              { "opcion": "No", "siguienteId": "del_p1", "id": "agregador_no" },
+              { "opcion": "1", "siguienteId": "del_p1", "id": "agregador_1" },
+              { "opcion": "2 o mas", "siguienteId": "del_p1", "id": "agregador_2" }
+            ]
+          },
+          {
+            "id": "del_p1",
+            "pregunta": "¿Tienes o vas a necesitar una tienda online?",
+            "opciones": [
+              { "opcion": "Tengo", "siguienteId": "del_p2", "id": "tienda_si" },
+              { "opcion": "No tengo, necesito una", "siguienteId": "del_p2", "id": "tienda_no" }
+            ]
+          },
+          {
+            "id": "del_p2",
+            "pregunta": "¿Quieres que los pedidos se impriman automáticamente en una impresora?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "del_pregunta_impresora", "id": "impresion_si" },
+              { "opcion": "No", "siguienteId": "del_pregunta_impresora", "id": "impresion_no" }
+            ]
+          },
+          {
+            "id": "del_pregunta_impresora",
+            "pregunta": "¿Tienes alguna impresora que quieras usar?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "del_pregunta_ethernet", "id": "impresora_si" },
+              { "opcion": "No", "siguienteId": "del_tipo_impresora", "id": "impresora_no" }
+            ]
+          },
+          {
+            "id": "del_pregunta_ethernet",
+            "pregunta": "¿Es por wifi o por cable?",
+            "opciones": [
+              { "opcion": "Wifi", "siguienteId": "del_preguntaF", "id": "wifi_si" },
+              { "opcion": "Cable", "siguienteId": "del_preguntaF", "id": "cable_no" }
+            ]
+          },
+          {
+            "id": "del_preguntaF",
+            "pregunta": "¿Qué marca es la impresora?",
+            "opciones": [
+              { "opcion": "Epson", "siguienteId": "del_pregunta_mas_impresora", "id": "marca_epson" },
+              { "opcion": "Otra", "siguienteId": "del_pregunta_mas_impresora", "id": "marca_otra" }
+            ]
+          },
+          {
+            "id": "del_pregunta_mas_impresora",
+            "pregunta": "¿Vas a necesitar alguna impresora mas?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "del_tipo_impresora", "id": "impresora_si" },
+              { "opcion": "No", "siguienteId": "del_p8", "id": "impresora_no" }
+            ]
+          },
+          {
+            "id": "del_tipo_impresora",
+            "pregunta": "¿Que tipo de impresora va a necesitar?",
+            "opciones": [
+              { "opcion": "Por Cable", "siguienteId": "del_cantidad_tipo_impresora_cable", "id": "impresora_cable" },
+              { "opcion": "Por Wifi", "siguienteId": "del_cantidad_tipo_impresora_wifi", "id": "impresora_wifi" },
+              { "opcion": "Ambas", "siguienteId": "del_cantidad_impresora_ambas", "id": "impresora_ambas" }
+            ]
+          },
+          {
+            "id": "del_cantidad_tipo_impresora_cable",
+            "pregunta": "¿Cuántas impresoras necesitas? (mínimo 2 si quieres enviar comandas a cocina)",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_p8", "id": "impresora_1" },
+              { "opcion": "2", "siguienteId": "del_p8", "id": "impresora_2" },
+              { "opcion": "3", "siguienteId": "del_p8", "id": "impresora_3" },
+              { "opcion": "4 ", "siguienteId": "del_p8", "id": "impresora_4" },
+              { "opcion": "5", "siguienteId": "del_p8", "id": "impresora_5" }
+            ]
+          },
+          {
+            "id": "del_cantidad_tipo_impresora_wifi",
+            "pregunta": "¿Cuántas impresoras necesitas? (mínimo 2 si quieres enviar comandas a cocina)",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_p8", "id": "impresora_1" },
+              { "opcion": "2", "siguienteId": "del_p8", "id": "impresora_2" },
+              { "opcion": "3", "siguienteId": "del_p8", "id": "impresora_3" },
+              { "opcion": "4 ", "siguienteId": "del_p8", "id": "impresora_4" },
+              { "opcion": "5", "siguienteId": "del_p8", "id": "impresora_5" }
+            ]
+          },
+          {
+            "id": "del_cantidad_impresora_ambas",
+            "pregunta": "¿Cuántas impresoras necesitas?",
+            "opciones": [
+              { "opcion": "2", "siguienteId": "del_p8", "id": "impresora_2" },
+              { "opcion": "3", "siguienteId": "del_p4", "id": "impresora_3" },
+              { "opcion": "4 ", "siguienteId": "del_p5", "id": "impresora_4" },
+              { "opcion": "5", "siguienteId": "del_p6", "id": "impresora_5" }
+            ]
+          },
+          {
+            "id": "del_p4",
+            "pregunta": "¿Cuantas impresoras necesita por wifi? Segun lo que seleccione entiendo que las otras restantes seran por cable.",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_p8", "id": "impresora_wifi_1" },
+              { "opcion": "2", "siguienteId": "del_p8", "id": "impresora_wifi_2" }
+            ]
+          },
+          {
+            "id": "del_p5",
+            "pregunta": "¿Cuantas impresoras necesita por wifi? Segun lo que seleccione entiendo que las otras restantes seran por cable.",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_p8", "id": "impresora_wifi_1" },
+              { "opcion": "2", "siguienteId": "del_p8", "id": "impresora_wifi_2" },
+              { "opcion": "3", "siguienteId": "del_p8", "id": "impresora_wifi_3" }
+            ]
+          },
+          {
+            "id": "del_p6",
+            "pregunta": "¿Cuantas impresoras necesita por wifi? Segun lo que seleccione entiendo que las otras restantes seran por cable.",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_p8", "id": "impresora_wifi_1" },
+              { "opcion": "2", "siguienteId": "del_p8", "id": "impresora_wifi_2" },
+              { "opcion": "3", "siguienteId": "del_p8", "id": "impresora_wifi_3" },
+              { "opcion": "4", "siguienteId": "del_p8", "id": "impresora_wifi_4" }
+            ]
+          },
+          {
+            "id": "del_p8",
+            "pregunta": "¿Tienes servicio en sala?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "del_p9", "id": "servicio_sala_si" },
+              { "opcion": "No", "siguienteId": "del_p10", "id": "servicio_sala_no" }
+            ]
+          },
+          {
+            "id": "del_p9",
+            "pregunta": "¿Usaras algun dispositivo para tomar comandas en mesa? ¿Cuantos?",
+            "opciones": [
+              { "opcion": "NO", "siguienteId": "del_p10", "id": "dispositivo_mesa_0" },
+              { "opcion": "1", "siguienteId": "del_p10", "id": "dispositivo_mesa_1" },
+              { "opcion": "2", "siguienteId": "del_p10", "id": "dispositivo_mesa_2" },
+              { "opcion": "3", "siguienteId": "del_p10", "id": "dispositivo_mesa_3" },
+              { "opcion": "4 o mas", "siguienteId": "del_p10", "id": "dispositivo_mesa_4" }
+            ]
+          },
+          {
+            "id": "del_p10",
+            "pregunta": "Vale, para poder darte más informacion, sobre todo de precios, necesito saber si ¿Tienes tablet u ordenador para mandar comandas a cocina?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "del_numero_tabletpc", "id": "dispositivo_barra_si" },
+              { "opcion": "No", "siguienteId": "del_cantidad_tabletpc", "id": "dispositivo_barra_no" }
+            ]
+          },
+          {
+            "id": "del_numero_tabletpc",
+            "pregunta": "¿Cuántos dispositivos tiene?",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_preguntaC", "id": "dispositivo_barra_1" },
+              { "opcion": "2", "siguienteId": "del_preguntaC", "id": "dispositivo_barra_2" },
+              { "opcion": "3", "siguienteId": "del_preguntaC", "id": "dispositivo_barra_3" }
+            ]
+          },
+          {
+            "id": "del_cantidad_tabletpc",
+            "pregunta": "¿Cuántos dispositivos va a necesitar para mandar comandas a cocina?",
+            "opciones": [
+              { "opcion": "1", "siguienteId": "del_preguntaB", "id": "dispositivo_barra_cantidad_1" },
+              { "opcion": "2", "siguienteId": "del_preguntaB", "id": "dispositivo_barra_cantidad_2" },
+              { "opcion": "3", "siguienteId": "del_preguntaB", "id": "dispositivo_barra_cantidad_3" }
+            ]
+          },
+          {
+            "id": "del_preguntaB",
+            "pregunta": "Perfecto ¿Qué sistema operativo prefieres?",
+            "opciones": [
+              { "opcion": "Android", "siguienteId": "del_dispositivo_android", "id": "so_android" },
+              { "opcion": "IOS", "siguienteId": "del_dispositivo_ios", "id": "so_ios" },
+              { "opcion": "Windows", "siguienteId": "finalRecomendacion", "id": "so_windows" }
+            ]
+          },
+          {
+            "id": "del_preguntaC",
+            "pregunta": "¿Vale que sistema operativo utiliza?",
+            "opciones": [
+              { "opcion": "Android", "siguienteId": "del_dispositivo_android", "id": "so_android" },
+              { "opcion": "IOS", "siguienteId": "del_dispositivo_ios", "id": "so_ios" },
+              { "opcion": "Windows", "siguienteId": "finalRecomendacion", "id": "so_windows" }
+            ]
+          },
+          {
+            "id": "del_dispositivo_android",
+            "pregunta": "¿Qué dispositivo usas o necesitas?",
+            "opciones": [
+              { "opcion": "Movil", "siguienteId": "finalRecomendacion", "id": "dispositivo_movil" },
+              { "opcion": "Tablet", "siguienteId": "finalRecomendacion", "id": "dispositivo_tablet" }
+            ]
+          },
+          {
+            "id": "del_dispositivo_ios",
+            "pregunta": "¿Qué dispositivo usas o necesitas?",
+            "opciones": [
+              { "opcion": "Movil", "siguienteId": "del_router_especifico", "id": "dispositivo_movil" },
+              { "opcion": "Tablet", "siguienteId": "del_router_especifico", "id": "dispositivo_tablet" },
+              { "opcion": "Ordenador", "siguienteId": "del_router_especifico", "id": "dispositivo_ordenador" }
+            ]
+          },
+          {
+            "id": "del_router_especifico",
+            "pregunta": "Debe saber que es necesario tener un router específico que cree una red local para que funcione el TPV L'Addition. A parte del router que emite la señal de internet. ¿Quiere contratarlo con nosotros?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "finalRecomendacion", "id": "router_especifico_si" },
+              { "opcion": "No", "siguienteId": "finalRecomendacion", "id": "router_especifico_no" }
+            ]
+          },
+          {
+            "id": "finalRecomendacion",
+            "pregunta": "Gracias. Según tus respuestas, te propongo la configuración ideal para tu food truck. ¿Quieres un presupuesto personalizado?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "formularioPresupuesto", "id": "presupuesto_si" },
+              { "opcion": "No, gracias", "siguienteId": "ayudaAdicional", "id": "presupuesto_no" }
+            ]
+          },
+          {
+            "id": "ayudaAdicional",
+            "pregunta": "¿Puedo ayudarte en algo más?",
+            "opciones": [
+              { "opcion": "Si", "siguienteId": "volver_inicio", "id": "volver_inicio" },
+              { "opcion": "No, gracias", "siguienteId": "volver_inicio", "id": "volver_inicio" }
+            ]
+          }
+      ]
+    }
+  }
+}
